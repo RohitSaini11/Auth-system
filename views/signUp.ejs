@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="stylesheet" href="index.css">
+    <!-- <style>
+        /* body{
+            background-color: #F2F3F5;
+        }
+        input{
+            padding: 5px;
+            font-size: medium;
+            padding: 10px;
+        }
+        .container{
+            background-color: white;
+            height: 60vh;
+            width: 40vw;
+            display: flex;
+            justify-content: center;
+            margin: 100px auto auto auto;
+            border-radius: 5px;
+            box-shadow: 0px 1px 3px gray;
+        }
+        .container .formWrap form{
+            width:20rem;
+            display: flex;
+            flex-direction: column;
+            gap:15px;
+        } */
+    </style> -->
+</head>
+<body>
+    <div class="container">
+        <div class="formWrap">
+            <h2 style="text-align: center; margin:20px 0 20px 0;">Sign Up </h2>
+            <form action="/create" method="post">
+                <input type="text" name="name" placeholder="Enter Name" required>
+                <input type="email" name="email" placeholder="Enter Email" required>
+                <input type="password" name="password" placeholder="Enter Password" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required   >
+
+                <button type="submit" class="loginBtn">Sign Up</button>
+            </form>
+            <p style="margin-top: 15px; text-align: center; font-size: 1.2em; ">Already have an account ? <a href="/sign-in" class="actionBtn">Sign In</a></p>
+            
+            <div class="google-SignIn">
+                <p style="font-size: medium; margin: 10px;"> OR </p>
+                <p style="margin:10px 0px 10px 0px; text-align: center; font-size: 1.2em;">
+                    Sign Up Using 
+                    <a href="/auth/google/">
+                        <br>
+                        <img class="google-logo" src="images/google.png" alt="">
+                    </a>
+                </p>
+            </div>
+        
+        </div>
+    </div>
+
+    <script>
+        <% if(flash.success && flash.success.length > 0) {%>
+            new Noty({
+                theme:'relax' ,
+                text: "<%= flash.success %>",
+                type:'success',
+                layout:'topRight',
+                timeout:1500
+
+            }).show();
+        <%}%>
+        <% if(flash.error && flash.error.length > 0) {%>
+            new Noty({
+                theme:'relax' ,
+                text: "<%= flash.error %>",
+                type:'error',
+                layout:'topRight',
+                timeout:1500
+
+            }).show();
+        <%}%>
+    </script>
+</body>
+</html>
